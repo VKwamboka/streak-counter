@@ -25,10 +25,10 @@
 - On Close, Close the Pop Up
 - Delete, Delete the Activity
 
-##### what to add
+#### what to add
 - Add a best streak Feature That Shows the activity with the best streak next to the header.
 
-##### Use the following
+#### Use the following
     •Arrays no Local Storage and should be private 
     •Three or More Classes•At least one static method
     •Strong Typing•Interfaces, Have all interfaces on their one Folder.
