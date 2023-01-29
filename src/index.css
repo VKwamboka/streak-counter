@@ -36,3 +36,44 @@ ion-icon{
     flex-direction: column;
     gap: 20px;
 }
+form{
+        background-color: white;
+        width: 30%;
+        height: 20rem;
+        gap: 10px;
+        padding: 10px;
+        border: 1px solid gray;
+        border-radius: 10px;
+        margin-top: 20px;
+}
+.content2{
+    margin-top: 50px;
+    display: flex;
+    gap: 20px;
+    justify-content: space-around;
+    align-items: center;
+    
+    
+}
+.input {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+  }
+  .input .input {
+    border: 1px solid grey;
+    width: 100%;
+    padding: 8px;
+    border-radius: 5px;
+  }
+  .input label {
+    padding: 5px;
+    font-size: 20px;
+    background-color: white;
+    color: #ffbea0;
+  }
+  .labels{
+    color: white;
+    padding: 10px;
+    width: 100%;
+  }
