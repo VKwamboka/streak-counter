@@ -80,10 +80,9 @@ addTask();
 
 // display pop task
 function popTask(id: number) {
+    modal.style.display = "block"
     modal.innerHTML = "";
-    const index = Task.findIndex((a) => a.id === id);
-    console.log(index);
-
+    // const index = Task.findIndex((a) => a.id === id);
     const task: Tasks[] = Task.filter((a) => a.id === id);
     task.find((a) => {
       let html = `
@@ -93,7 +92,7 @@ function popTask(id: number) {
                 <p>${a.TaskName}</p>  
                 <p>Streak</p>   
                 <div class="btn">
-                <button onclick="">Close</button>
+                <button onclick="closeModal()">Close</button>
                 <button onclick="">Delete</button>
                 </div>           
         </div>`;
@@ -103,4 +102,10 @@ function popTask(id: number) {
     console.log("hey");
 }
 // close modal
-function
+function closeModal() {
+    modal.style.display = "none"
+}
+// delete task
+function deleteTask() {
+    
+}

@@ -69,9 +69,9 @@ function addTask() {
 addTask();
 // display pop task
 function popTask(id) {
+    modal.style.display = "block";
     modal.innerHTML = "";
-    const index = Task.findIndex((a) => a.id === id);
-    console.log(index);
+    // const index = Task.findIndex((a) => a.id === id);
     const task = Task.filter((a) => a.id === id);
     task.find((a) => {
         let html = `
@@ -81,11 +81,18 @@ function popTask(id) {
                 <p>${a.TaskName}</p>  
                 <p>Streak</p>   
                 <div class="btn">
-                <button onclick="">Close</button>
+                <button onclick="closeModal()">Close</button>
                 <button onclick="">Delete</button>
                 </div>           
         </div>`;
         modal.innerHTML += html;
     });
     console.log("hey");
+}
+// close modal
+function closeModal() {
+    modal.style.display = "none";
+}
+// delete task
+function deleteTask() {
 }
