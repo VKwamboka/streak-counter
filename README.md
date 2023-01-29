@@ -1,6 +1,6 @@
 # Streak Counter
 
-### We are Going to Build a Simple streak Counter. A streak Counter is a tracker for Good Habit.
+- We are Going to Build a Simple streak Counter. A streak Counter is a tracker for Good Habit.
 ### For Example, if I Stop smoking today, I want to add that as an activity an in future, like next month I can see how many days have gone without me smoking.
 
 ### Below is a Guide to follow: On Page Load the page should look like This
