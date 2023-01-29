@@ -1,0 +1,29 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    background-color: #ff7f50;
+}
+
+.container{
+   
+   width: 100vw;
+
+}
+.content1{
+
+    display: flex;
+    gap: 20px;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+}
+ion-icon{
+    color: white;
+    font-size: 50px;
+}
+.content1 img{
+    width: 30%;
+    height: 30rem;
+}
