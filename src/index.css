@@ -87,7 +87,7 @@ form{
     color: black;
     min-height: 100px;
     display: flex;
-    gap: 10px;
+    gap: 15px;
     flex-wrap: wrap;
     margin: 4rem;
     justify-content: center;
@@ -99,7 +99,8 @@ form{
   }
   .task{
     padding: 10px;
-    border: 1px solid #ff7f50;
+    /* border: 1px solid #ff7f50; */
+    box-shadow: 0 4px 4px 0  #ff7f50;
     width: 12rem;
     justify-content: center;
     align-items: center;
