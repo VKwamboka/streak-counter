@@ -1,8 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;800&display=swap');
+
 *{
     box-sizing: border-box;
     margin: 0;
     padding: 0;
     background-color: #ff7f50;
+    font-family: montserrat;
 }
 
 .container{
@@ -17,7 +20,7 @@
     color: white;
     justify-content: center;
     align-items: center;
-    margin-top: 100px;
+    margin-top: 80px;
 }
 ion-icon{
     color: white;
@@ -26,4 +29,10 @@ ion-icon{
 .content1 img{
     width: 30%;
     height: 30rem;
+}
+#welcome{
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
