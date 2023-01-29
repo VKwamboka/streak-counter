@@ -7,7 +7,7 @@ let taskName = document.getElementById("taskName") ! as HTMLInputElement
 let taskImage = document.getElementById("taskImage") ! as HTMLInputElement
 let date = document.getElementById("date") ! as HTMLInputElement
 let form = document.getElementById("form")! as HTMLFormElement
-
+let activities = document.getElementById("activities")! as HTMLDivElement
 
 
 interface Tasks{
@@ -58,12 +58,29 @@ function addTask(){
         }
         else{
             let singleTask:Tasks = {id :Math.random()*100000, TaskName, TaskImage,Date}
-            Task.push(singleTask)
-            // showtodos()
+            Task.push(singleTask)         
         
             console.log(singleTask)
+            activities.innerHTML =""
+            Task.forEach((a) => {
+               
+                let html = `
+                <div class="task" style ="display:flex;flex-direction:column;gap:5px; margin-top:10px;">                      
+                        <img src="${a.TaskImage}" style="width:98%;height:100px">
+                        <p>${a.Date}</p>  
+                        <p>${a.TaskName}</p>                     
+                </div>`
+    
+                    activities.innerHTML += html
+            
+            });
+            
         }  
     })
 }
 // submitBtn.addEventListener("click", addTask)
 addTask()
+// <div class="btn">
+// <button onclick="">Close</button>
+// <button onclick="">Delete</button>
+// </div>

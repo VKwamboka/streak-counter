@@ -8,6 +8,7 @@ let taskName = document.getElementById("taskName");
 let taskImage = document.getElementById("taskImage");
 let date = document.getElementById("date");
 let form = document.getElementById("form");
+let activities = document.getElementById("activities");
 // add button
 AddTast.addEventListener("click", () => {
     TaskForm.style.display = "block";
@@ -44,10 +45,23 @@ function addTask() {
         else {
             let singleTask = { id: Math.random() * 100000, TaskName, TaskImage, Date };
             Task.push(singleTask);
-            // showtodos()
             console.log(singleTask);
+            activities.innerHTML = "";
+            Task.forEach((a) => {
+                let html = `
+                <div class="task" style ="display:flex;flex-direction:column;gap:5px; margin-top:10px;">                      
+                        <img src="${a.TaskImage}" style="width:98%;height:100px">
+                        <p>${a.Date}</p>  
+                        <p>${a.TaskName}</p>                     
+                </div>`;
+                activities.innerHTML += html;
+            });
         }
     });
 }
 // submitBtn.addEventListener("click", addTask)
 addTask();
+// <div class="btn">
+// <button onclick="">Close</button>
+// <button onclick="">Delete</button>
+// </div>
