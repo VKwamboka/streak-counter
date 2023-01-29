@@ -9,6 +9,7 @@ let taskImage = document.getElementById("taskImage");
 let date = document.getElementById("date");
 let form = document.getElementById("form");
 let activities = document.getElementById("activities");
+let modal = document.getElementById("modal");
 // add button
 AddTast.addEventListener("click", () => {
     TaskForm.style.display = "block";
@@ -43,25 +44,47 @@ function addTask() {
             }, 5000);
         }
         else {
-            let singleTask = { id: Math.random() * 100000, TaskName, TaskImage, Date };
+            let singleTask = {
+                id: Math.random() * 100000,
+                TaskName,
+                TaskImage,
+                Date,
+            };
             Task.push(singleTask);
             console.log(singleTask);
             activities.innerHTML = "";
             Task.forEach((a) => {
                 let html = `
-                <div class="task" style ="display:flex;flex-direction:column;gap:5px; margin-top:10px;">                      
+                <div class="task" style ="display:flex;flex-direction:column;gap:5px; margin-top:10px;" onclick="popTask(${a.id})" >                      
                         <img src="${a.TaskImage}" style="width:98%;height:100px">
                         <p>${a.Date}</p>  
-                        <p>${a.TaskName}</p>                     
+                        <p>${a.TaskName}</p>     
+                                    
                 </div>`;
                 activities.innerHTML += html;
             });
         }
     });
 }
-// submitBtn.addEventListener("click", addTask)
 addTask();
-// <div class="btn">
-// <button onclick="">Close</button>
-// <button onclick="">Delete</button>
-// </div>
+// display pop task
+function popTask(id) {
+    modal.innerHTML = "";
+    const index = Task.findIndex((a) => a.id === id);
+    console.log(index);
+    const task = Task.filter((a) => a.id === id);
+    task.find((a) => {
+        let html = `
+        <div class="modalTask" id="modalTask" style ="display:flex;flex-direction:column;gap:5px; margin-top:10px;" >                      
+                <img src="${a.TaskImage}" style="width:98%;height:100px">
+                <p>${a.Date}</p>  
+                <p>${a.TaskName}</p>     
+                <div class="btn">
+                <button onclick="">Close</button>
+                <button onclick="">Delete</button>
+                </div>           
+        </div>`;
+        modal.innerHTML += html;
+    });
+    console.log("hey");
+}
