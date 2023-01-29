@@ -10,8 +10,8 @@
         <div class="container">
             <div class="content">
                 <h1 style="color: white;text-align: center;">Welcome to my streak counter</h1>
-                <div class="content1">
-                    <ion-icon name="add-circle-outline"></ion-icon>
+                <div class="content1" id="content1">
+                    <ion-icon name="add-circle-outline" id="add"></ion-icon>
                     <img src="../assets/streak1.png" alt="steak 1">
                     <div id="welcome">
                         <h1>Achieving Personal Goals with Streaks
@@ -29,8 +29,8 @@
 
                 </div>
 
-                <div class="content2">
-                    <ion-icon name="close-outline"></ion-icon>
+                <div class="content2" id="taskForm" style="display: none;">
+                    <ion-icon name="close-outline" id="closeForm"></ion-icon>
                     <div class="here" style="display: flex;flex-direction: column;gap: 10px;color: white;">
                         <ion-icon name="list-outline"></ion-icon>
                         <p>Add A Todo Here</p>
@@ -78,6 +78,7 @@
 
         </div>
 
+        <script src="../dist/index.js"></script>
         <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
         <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     </body>
