@@ -88,9 +88,10 @@ function popTask(id: number) {
     task.find((a) => {
       let html = `
         <div class="modalTask" id="modalTask" style ="display:flex;flex-direction:column;gap:5px; margin-top:10px;" >                      
-                <img src="${a.TaskImage}" style="width:98%;height:100px">
+                <img src="${a.TaskImage}" style="width:100px;height:100px;margin:5px;">
                 <p>${a.Date}</p>  
-                <p>${a.TaskName}</p>     
+                <p>${a.TaskName}</p>  
+                <p>Streak</p>   
                 <div class="btn">
                 <button onclick="">Close</button>
                 <button onclick="">Delete</button>
@@ -101,3 +102,5 @@ function popTask(id: number) {
     });
     console.log("hey");
 }
+// close modal
+function
