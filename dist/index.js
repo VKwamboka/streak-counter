@@ -94,9 +94,9 @@ function popTask(id) {
                 <p>${a.Date}</p>  
                 <p>${a.TaskName}</p>  
                 <p>Streak</p>   
-                <div class="btn">
-                <button onclick="closeModal()">Close</button>
-                <button onclick="deleteTask(${a.id})">Delete</button>
+                <div class="taskbtn">
+                <button onclick="closeModal()" style="background-color:#ff0000;">Close</button>
+                <button onclick="deleteTask(${a.id})" style="background-color:#6c757d;">Delete</button>
                 </div>           
         </div>`;
         modal.innerHTML += html;

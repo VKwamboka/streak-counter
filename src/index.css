@@ -118,3 +118,15 @@ form{
   #modal{
      height: 10rem;
   }
+  .taskbtn{
+    display: flex;
+    gap: 20px; 
+    justify-content: center;
+    align-items: center;
+  
+  }
+  .taskbtn button {
+    padding: 10px;
+    color: white;
+    border: none;
+  }
