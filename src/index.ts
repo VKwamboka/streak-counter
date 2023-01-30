@@ -30,7 +30,9 @@ closeForm.addEventListener("click", () => {
   content1.style.display = "flex";
 });
 // function add task
-const Task: Tasks[] = [];
+let Task: Tasks[] = [];
+
+
 function addTask() {
   TaskForm.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -52,6 +54,8 @@ function addTask() {
         p.style.display = "none";
       }, 5000);
     } else {
+    activities.innerHTML = "";
+
       let singleTask: Tasks = {
         id: Math.random() * 100000,
         TaskName,
@@ -59,9 +63,7 @@ function addTask() {
         Date,
       };
       Task.push(singleTask);
-
-      console.log(singleTask);
-      activities.innerHTML = "";
+ 
       Task.forEach((a) => {
         let html = `
                 <div class="task" style ="display:flex;flex-direction:column;gap:5px; margin-top:10px;" onclick="popTask(${a.id})" >                      
@@ -73,6 +75,7 @@ function addTask() {
 
         activities.innerHTML += html;
       });
+
     }
   });
 }
@@ -93,7 +96,7 @@ function popTask(id: number) {
                 <p>Streak</p>   
                 <div class="btn">
                 <button onclick="closeModal()">Close</button>
-                <button onclick="">Delete</button>
+                <button onclick="deleteTask(${a.id})">Delete</button>
                 </div>           
         </div>`;
 
@@ -106,6 +109,28 @@ function closeModal() {
     modal.style.display = "none"
 }
 // delete task
-function deleteTask() {
+function deleteTask(id:number) {
     
+  const index = Task.findIndex(a=>a.id===id)
+    console.log(index);
+    Task.splice(index,1)
+    console.log(index)
+  
+    // if(Task.length>0){
+    //     modal.style.display = "none"
+    //     addTask()
+
+    // }
+    // else{
+    //     activities.innerHTML=""
+    //     modal.style.display = "none"
+    //  const p = document.createElement("p");
+    //   p.textContent = "You Don't have any Activity!!!";
+    //   p.style.color = "black";
+    //   p.style.fontSize = "30px"
+    //   p.id = "error-message";
+    //   activities.insertAdjacentElement("afterbegin", p);
+    //   addTask()
+    // }
+  
 }

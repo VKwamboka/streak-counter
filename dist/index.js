@@ -23,7 +23,7 @@ closeForm.addEventListener("click", () => {
     content1.style.display = "flex";
 });
 // function add task
-const Task = [];
+let Task = [];
 function addTask() {
     TaskForm.addEventListener("submit", (e) => {
         e.preventDefault();
@@ -44,6 +44,7 @@ function addTask() {
             }, 5000);
         }
         else {
+            activities.innerHTML = "";
             let singleTask = {
                 id: Math.random() * 100000,
                 TaskName,
@@ -51,8 +52,6 @@ function addTask() {
                 Date,
             };
             Task.push(singleTask);
-            console.log(singleTask);
-            activities.innerHTML = "";
             Task.forEach((a) => {
                 let html = `
                 <div class="task" style ="display:flex;flex-direction:column;gap:5px; margin-top:10px;" onclick="popTask(${a.id})" >                      
@@ -82,7 +81,7 @@ function popTask(id) {
                 <p>Streak</p>   
                 <div class="btn">
                 <button onclick="closeModal()">Close</button>
-                <button onclick="">Delete</button>
+                <button onclick="deleteTask(${a.id})">Delete</button>
                 </div>           
         </div>`;
         modal.innerHTML += html;
@@ -94,5 +93,22 @@ function closeModal() {
     modal.style.display = "none";
 }
 // delete task
-function deleteTask() {
+function deleteTask(id) {
+    Task.filter(a => a.id !== id);
+    // console.log(index);
+    // Task.splice(index,1)
+    // console.log(Task)
+    if (Task.length > 0) {
+        modal.style.display = "none";
+    }
+    else {
+        activities.innerHTML = "";
+        modal.style.display = "none";
+        const p = document.createElement("p");
+        p.textContent = "You Don't have any Activity!!!";
+        p.style.color = "black";
+        p.style.fontSize = "30px";
+        p.id = "error-message";
+        activities.insertAdjacentElement("afterbegin", p);
+    }
 }
