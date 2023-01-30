@@ -130,3 +130,8 @@ form{
     color: white;
     border: none;
   }
+  #act{
+    text-align: center;
+    font-size: 28px;
+    padding: 10px;
+  }

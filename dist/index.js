@@ -10,6 +10,7 @@ let date = document.getElementById("date");
 let form = document.getElementById("form");
 let activities = document.getElementById("activities");
 let modal = document.getElementById("modal");
+let act = document.getElementById("act");
 // add button
 AddTast.addEventListener("click", () => {
     TaskForm.style.display = "block";
@@ -70,6 +71,12 @@ function showTasks() {
     }
     else {
         activities.innerHTML = "";
+        act.style.display = "block";
+        // const p = document.createElement("p")
+        // p.textContent="Activities"
+        // p.style.color='Black'
+        // p.style.fontSize = "32px"
+        // activities.insertAdjacentElement("afterbegin",p)
         Task.forEach((a) => {
             let html = `
                 <div class="task" style ="display:flex;flex-direction:column;gap:5px; margin-top:10px;" onclick="popTask(${a.id})" >                      
