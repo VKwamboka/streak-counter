@@ -52,25 +52,40 @@ function addTask() {
                 Date,
             };
             Task.push(singleTask);
-            Task.forEach((a) => {
-                let html = `
+            showTasks();
+        }
+    });
+}
+addTask();
+// show tasks
+function showTasks() {
+    if (Task.length == 0) {
+        activities.innerHTML = "";
+        const p = document.createElement("p");
+        p.textContent = "You Don't have any Activity!!!";
+        p.style.color = 'Black';
+        p.style.fontSize = "32px";
+        activities.insertAdjacentElement("afterbegin", p);
+        // p.id = "error-message"
+    }
+    else {
+        activities.innerHTML = "";
+        Task.forEach((a) => {
+            let html = `
                 <div class="task" style ="display:flex;flex-direction:column;gap:5px; margin-top:10px;" onclick="popTask(${a.id})" >                      
                         <img src="${a.TaskImage}" style="width:98%;height:100px">
                         <p>${a.Date}</p>  
                         <p>${a.TaskName}</p>     
                                     
                 </div>`;
-                activities.innerHTML += html;
-            });
-        }
-    });
+            activities.innerHTML += html;
+        });
+    }
 }
-addTask();
 // display pop task
 function popTask(id) {
     modal.style.display = "block";
     modal.innerHTML = "";
-    // const index = Task.findIndex((a) => a.id === id);
     const task = Task.filter((a) => a.id === id);
     task.find((a) => {
         let html = `
@@ -86,7 +101,6 @@ function popTask(id) {
         </div>`;
         modal.innerHTML += html;
     });
-    console.log("hey");
 }
 // close modal
 function closeModal() {
@@ -94,21 +108,10 @@ function closeModal() {
 }
 // delete task
 function deleteTask(id) {
-    Task.filter(a => a.id !== id);
-    // console.log(index);
-    // Task.splice(index,1)
-    // console.log(Task)
-    if (Task.length > 0) {
-        modal.style.display = "none";
-    }
-    else {
-        activities.innerHTML = "";
-        modal.style.display = "none";
-        const p = document.createElement("p");
-        p.textContent = "You Don't have any Activity!!!";
-        p.style.color = "black";
-        p.style.fontSize = "30px";
-        p.id = "error-message";
-        activities.insertAdjacentElement("afterbegin", p);
-    }
+    const index = Task.findIndex(a => a.id === id);
+    console.log(index);
+    Task.splice(index, 1);
+    console.log(index);
+    modal.style.display = "none";
+    showTasks();
 }

@@ -63,7 +63,25 @@ function addTask() {
         Date,
       };
       Task.push(singleTask);
- 
+      showTasks()
+
+    }
+  });
+}
+addTask();
+
+// show tasks
+function showTasks(){
+  if(Task.length==0){
+      activities.innerHTML = ""
+      const p = document.createElement("p")
+      p.textContent="You Don't have any Activity!!!"
+      p.style.color='Black'
+      p.style.fontSize = "32px"
+      activities.insertAdjacentElement("afterbegin",p)
+      // p.id = "error-message"
+  }else{
+      activities.innerHTML =""
       Task.forEach((a) => {
         let html = `
                 <div class="task" style ="display:flex;flex-direction:column;gap:5px; margin-top:10px;" onclick="popTask(${a.id})" >                      
@@ -75,17 +93,14 @@ function addTask() {
 
         activities.innerHTML += html;
       });
-
-    }
-  });
+  
+  }
 }
-addTask();
 
 // display pop task
 function popTask(id: number) {
     modal.style.display = "block"
     modal.innerHTML = "";
-    // const index = Task.findIndex((a) => a.id === id);
     const task: Tasks[] = Task.filter((a) => a.id === id);
     task.find((a) => {
       let html = `
@@ -102,8 +117,8 @@ function popTask(id: number) {
 
       modal.innerHTML += html;
     });
-    console.log("hey");
 }
+
 // close modal
 function closeModal() {
     modal.style.display = "none"
@@ -115,22 +130,6 @@ function deleteTask(id:number) {
     console.log(index);
     Task.splice(index,1)
     console.log(index)
-  
-    // if(Task.length>0){
-    //     modal.style.display = "none"
-    //     addTask()
-
-    // }
-    // else{
-    //     activities.innerHTML=""
-    //     modal.style.display = "none"
-    //  const p = document.createElement("p");
-    //   p.textContent = "You Don't have any Activity!!!";
-    //   p.style.color = "black";
-    //   p.style.fontSize = "30px"
-    //   p.id = "error-message";
-    //   activities.insertAdjacentElement("afterbegin", p);
-    //   addTask()
-    // }
-  
+     modal.style.display = "none"
+    showTasks()
 }
