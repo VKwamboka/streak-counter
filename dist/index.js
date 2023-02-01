@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 let AddTast = document.getElementById("add");
 let TaskForm = document.getElementById("taskForm");
 let content1 = document.getElementById("content1");

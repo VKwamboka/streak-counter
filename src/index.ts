@@ -1,3 +1,5 @@
+import {Tasks} from "./interfaces/Tasks";
+
 let AddTast = document.getElementById("add")! as HTMLButtonElement;
 let TaskForm = document.getElementById("taskForm")! as HTMLFormElement;
 let content1 = document.getElementById("content1")! as HTMLDivElement;
@@ -11,12 +13,7 @@ let activities = document.getElementById("activities")! as HTMLDivElement;
 let modal = document.getElementById("modal")! as HTMLDivElement;
 let act = document.getElementById("act")!
 
-interface Tasks {
-  id: number;
-  TaskName: string;
-  TaskImage: string;
-  Date: string;
-}
+
 
 // add button
 AddTast.addEventListener("click", () => {
