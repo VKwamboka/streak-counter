@@ -12,6 +12,8 @@ let form = document.getElementById("form");
 let activities = document.getElementById("activities");
 let modal = document.getElementById("modal");
 let act = document.getElementById("act");
+class Streak {
+}
 // add button
 AddTast.addEventListener("click", () => {
     TaskForm.style.display = "block";

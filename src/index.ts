@@ -13,6 +13,28 @@ let activities = document.getElementById("activities")! as HTMLDivElement;
 let modal = document.getElementById("modal")! as HTMLDivElement;
 let act = document.getElementById("act")!
 
+class Streak {
+  startDate: Date;
+  constructor(startDate: Date) {
+    this.startDate = startDate;
+  }
+}
+
+class StreakDays extends Streak{
+private streaks: number = 0;
+  streakDays(date: Date){
+  let difference = (this.startDate.getTime() - new Date().getTime()) + 1
+  return this.streaks =  Math.ceil(difference / (1000 * 3600 * 24));
+  
+  }
+}
+
+class HighestStreaks{
+  static highestStreaks(streakArr: number[]){
+    const maxStreak: number = Math.max(...streakArr);
+    return maxStreak;
+  }
+}
 
 
 // add button
