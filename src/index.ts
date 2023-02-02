@@ -12,6 +12,8 @@ let form = document.getElementById("form")! as HTMLFormElement;
 let activities = document.getElementById("activities")! as HTMLDivElement;
 let modal = document.getElementById("modal")! as HTMLDivElement;
 let act = document.getElementById("act")!;
+let best = document.getElementById("best")! as HTMLDivElement;
+let noBest = document.getElementById("noBest")! as HTMLDivElement;
 
 class Streak {
   startDate: Date;
@@ -29,9 +31,15 @@ class StreakDays extends Streak {
 }
 
 class HighestStreaks {
-  static highestStreaks(streakArr: number[]) {
-    const maxStreak: number = Math.max(...streakArr);
-    return maxStreak;
+  static highestStreaks() {
+    let bestTask: Tasks = Task[0];
+
+    Task.forEach((task) => {
+      if (task.Days > bestTask.Days) {
+        bestTask = task;
+      }
+    });
+    return bestTask;
   }
 }
 
@@ -50,16 +58,22 @@ closeForm.addEventListener("click", () => {
 // function add task
 let Task: Tasks[] = [];
 
+let bestStreak: Tasks;
+
 function addTask() {
   TaskForm.addEventListener("submit", (e) => {
     e.preventDefault();
+
     let TaskName = taskName.value;
     let TaskImage = taskImage.value;
-    let Date = date.value;
+    let dates = date.value;
+    let streak = new StreakDays(new Date(dates));
+    // let streakdays = streak.streakDays(new Date());
+    let Days = streak.streakDays(new Date());
 
     // validation
-    console.log(TaskName, TaskImage, Date);
-    if (TaskName == "" || TaskImage == "" || Date == "") {
+    // console.log(TaskName, TaskImage, dates);
+    if (TaskName == "" || TaskImage == "" || dates == "") {
       const p = document.createElement("p");
       p.textContent = "PLease fill in all the fields";
       p.style.color = "red";
@@ -77,10 +91,13 @@ function addTask() {
         id: Math.random() * 100000,
         TaskName,
         TaskImage,
-        Date,
+        dates,
+        Days,
       };
       Task.push(singleTask);
       showTasks();
+      bestStreak = HighestStreaks.highestStreaks();
+      console.log(bestStreak)
     }
   });
 }
@@ -102,14 +119,16 @@ function showTasks() {
       let html = `
                 <div class="task" style ="display:flex;flex-direction:column;gap:5px; margin-top:10px;" onclick="popTask(${a.id})" >                      
                         <img src="${a.TaskImage}" style="width:98%;height:100px">
-                        <p>${a.Date}</p>  
-                        <p>${a.TaskName}</p>     
+                        <p>${a.dates}</p>  
+                        <p>${a.TaskName}</p>   
+                        <p>${a.Days}</p>  
                                     
                 </div>`;
 
       activities.innerHTML += html;
     });
   }
+  // console.log(Task)
 }
 
 // display pop task
@@ -118,7 +137,7 @@ function popTask(id: number) {
   modal.innerHTML = "";
   const task: Tasks[] = Task.filter((a) => a.id === id);
   task.find((a) => {
-    let streak = new StreakDays(new Date(a.Date));
+    let streak = new StreakDays(new Date(a.dates));
     let streakdays = streak.streakDays(new Date());
     console.log(streakdays);
     let html = `
@@ -126,7 +145,7 @@ function popTask(id: number) {
                 <img src="${
                   a.TaskImage
                 }" style="width:100px;height:100px;margin:5px;">
-                <p>${a.Date}</p>  
+                <p>${a.dates}</p>  
                 <p>${a.TaskName}</p>  
                 <p>${Math.abs(streakdays)} Days</p>   
                 <div class="taskbtn">
@@ -156,11 +175,28 @@ function deleteTask(id: number) {
   showTasks();
 }
 
-// function showStreaks(id:number){
-//   const task: Tasks[] = Task.filter((a) => a.id === id);
-//   task.find((a) => {
-//   let streak = new StreakDays(new Date(a.Date))
-//   let streakdays = streak.streakDays(new Date())
-//   console.log(streakdays)
-//   })
+// display hi
+
+// function highestStreak(){
+//   if(Task.length > 0){
+//     let bestTask:Tasks =Task[0]
+
+//     Task.forEach(task=>{
+//       if (task.Days > bestTask.Days){
+//         bestTask = task
+//       }
+
+//     })
+//     return bestTask
+//   }
+//   return 0
+
 // }
+
+// function highestStreak() {
+//   console.log(HighestStreaks.highestStreaks())
+// }
+// highestStreak()
+// submitBtn.addEventListener("click",()=>{
+//   console.log(highestStreak())
+// })
