@@ -157,5 +157,6 @@ function deleteTask(id:number) {
     Task.splice(index,1)
     console.log(index)
      modal.style.display = "none"
+     act.style.display = "none"
     showTasks()
 }
