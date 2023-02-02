@@ -88,13 +88,15 @@ function addTask() {
             };
             Task.push(singleTask);
             showTasks();
+            // best streaks
             bestStreak = HighestStreaks.highestStreaks();
             console.log(bestStreak.Days);
             function showBest() {
-                best.style.display = "block";
-                best.innerHTML = "";
-                const taskbest = bestStreak;
-                let html = `
+                if (Task.length > 0) {
+                    best.style.display = "block";
+                    best.innerHTML = "";
+                    const taskbest = bestStreak;
+                    let html = `
           <div class="task" style ="display:flex;flex-direction:column;gap:5px; margin-top:10px;" onclick="popTask(${taskbest.id})" >                      
                   <img src="${bestStreak.TaskImage}" style="width:98%;height:100px">
                   <p>${bestStreak.dates}</p>  
@@ -102,8 +104,9 @@ function addTask() {
                   <p>${bestStreak.Days}</p>  
                               
           </div>`;
-                noBest.style.display = "none";
-                best.innerHTML += html;
+                    noBest.style.display = "none";
+                    best.innerHTML += html;
+                }
             }
             showBest();
         }

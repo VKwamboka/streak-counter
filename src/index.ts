@@ -96,11 +96,13 @@ function addTask() {
       };
       Task.push(singleTask);
       showTasks();
+
+      // best streaks
       bestStreak = HighestStreaks.highestStreaks();
       console.log(bestStreak.Days)
 
       function showBest(){
-      
+        if(Task.length > 0){
             best.style.display = "block"
             best.innerHTML = ""
             const taskbest: Tasks = bestStreak
@@ -114,6 +116,7 @@ function addTask() {
           </div>`;
           noBest.style.display ="none"
           best.innerHTML += html;
+        }
           
       }
       showBest()
