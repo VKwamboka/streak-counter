@@ -1,4 +1,4 @@
-import {Tasks} from "./interfaces/Tasks";
+import { Tasks } from "./interfaces/Tasks";
 
 let AddTast = document.getElementById("add")! as HTMLButtonElement;
 let TaskForm = document.getElementById("taskForm")! as HTMLFormElement;
@@ -11,7 +11,7 @@ let date = document.getElementById("date")! as HTMLInputElement;
 let form = document.getElementById("form")! as HTMLFormElement;
 let activities = document.getElementById("activities")! as HTMLDivElement;
 let modal = document.getElementById("modal")! as HTMLDivElement;
-let act = document.getElementById("act")!
+let act = document.getElementById("act")!;
 
 class Streak {
   startDate: Date;
@@ -20,22 +20,20 @@ class Streak {
   }
 }
 
-class StreakDays extends Streak{
-private streaks: number = 0;
-  streakDays(date: Date){
-  let difference = (this.startDate.getTime() - new Date().getTime()) + 1
-  return this.streaks =  Math.ceil(difference / (1000 * 3600 * 24));
-  
+class StreakDays extends Streak {
+  private streaks: number = 0;
+  streakDays(date: Date) {
+    let difference = this.startDate.getTime() - new Date().getTime() + 1;
+    return (this.streaks = Math.ceil(difference / (1000 * 3600 * 24)));
   }
 }
 
-class HighestStreaks{
-  static highestStreaks(streakArr: number[]){
+class HighestStreaks {
+  static highestStreaks(streakArr: number[]) {
     const maxStreak: number = Math.max(...streakArr);
     return maxStreak;
   }
 }
-
 
 // add button
 AddTast.addEventListener("click", () => {
@@ -51,7 +49,6 @@ closeForm.addEventListener("click", () => {
 });
 // function add task
 let Task: Tasks[] = [];
-
 
 function addTask() {
   TaskForm.addEventListener("submit", (e) => {
@@ -74,7 +71,7 @@ function addTask() {
         p.style.display = "none";
       }, 5000);
     } else {
-    activities.innerHTML = "";
+      activities.innerHTML = "";
 
       let singleTask: Tasks = {
         id: Math.random() * 100000,
@@ -83,27 +80,26 @@ function addTask() {
         Date,
       };
       Task.push(singleTask);
-      showTasks()
-
+      showTasks();
     }
   });
 }
 addTask();
 
 // show tasks
-function showTasks(){
-  if(Task.length==0){
-      activities.innerHTML = ""
-      const p = document.createElement("p")
-      p.textContent="You Don't have any Activity!!!"
-      p.style.color='Black'
-      p.style.fontSize = "32px"
-      activities.insertAdjacentElement("afterbegin",p)
-  }else{
-      activities.innerHTML =""
-      act.style.display = "block"
-      Task.forEach((a) => {
-        let html = `
+function showTasks() {
+  if (Task.length == 0) {
+    activities.innerHTML = "";
+    const p = document.createElement("p");
+    p.textContent = "You Don't have any Activity!!!";
+    p.style.color = "Black";
+    p.style.fontSize = "32px";
+    activities.insertAdjacentElement("afterbegin", p);
+  } else {
+    activities.innerHTML = "";
+    act.style.display = "block";
+    Task.forEach((a) => {
+      let html = `
                 <div class="task" style ="display:flex;flex-direction:column;gap:5px; margin-top:10px;" onclick="popTask(${a.id})" >                      
                         <img src="${a.TaskImage}" style="width:98%;height:100px">
                         <p>${a.Date}</p>  
@@ -111,46 +107,60 @@ function showTasks(){
                                     
                 </div>`;
 
-        activities.innerHTML += html;
-      });
-  
+      activities.innerHTML += html;
+    });
   }
 }
 
 // display pop task
 function popTask(id: number) {
-    modal.style.display = "block"
-    modal.innerHTML = "";
-    const task: Tasks[] = Task.filter((a) => a.id === id);
-    task.find((a) => {
-      let html = `
+  modal.style.display = "block";
+  modal.innerHTML = "";
+  const task: Tasks[] = Task.filter((a) => a.id === id);
+  task.find((a) => {
+    let streak = new StreakDays(new Date(a.Date));
+    let streakdays = streak.streakDays(new Date());
+    console.log(streakdays);
+    let html = `
         <div class="modalTask" id="modalTask" style ="display:flex;flex-direction:column;gap:5px; margin-top:10px;" >                      
-                <img src="${a.TaskImage}" style="width:100px;height:100px;margin:5px;">
+                <img src="${
+                  a.TaskImage
+                }" style="width:100px;height:100px;margin:5px;">
                 <p>${a.Date}</p>  
                 <p>${a.TaskName}</p>  
-                <p>Streak</p>   
+                <p>${Math.abs(streakdays)} Days</p>   
                 <div class="taskbtn">
                 <button onclick="closeModal()" style="background-color:#ff0000;">Close</button>
-                <button onclick="deleteTask(${a.id})" style="background-color:#6c757d;">Delete</button>
+                <button onclick="deleteTask(${
+                  a.id
+                })" style="background-color:#6c757d;">Delete</button>
                 </div>           
         </div>`;
 
-      modal.innerHTML += html;
-    });
+    modal.innerHTML += html;
+  });
 }
 
 // close modal
 function closeModal() {
-    modal.style.display = "none"
+  modal.style.display = "none";
 }
 // delete task
-function deleteTask(id:number) {
-    
-  const index = Task.findIndex(a=>a.id===id)
-    console.log(index);
-    Task.splice(index,1)
-    console.log(index)
-     modal.style.display = "none"
-     act.style.display = "none"
-    showTasks()
+function deleteTask(id: number) {
+  const index = Task.findIndex((a) => a.id === id);
+  console.log(index);
+  Task.splice(index, 1);
+  console.log(index);
+  modal.style.display = "none";
+  act.style.display = "none";
+  showTasks();
 }
+
+// function showStreaks(id:number){
+//   const task: Tasks[] = Task.filter((a) => a.id === id);
+//   task.find((a) => {
+//   let streak = new StreakDays(new Date(a.Date))
+//   let streakdays = streak.streakDays(new Date())
+//   console.log(streakdays)
+//   })
+// }

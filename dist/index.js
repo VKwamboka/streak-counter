@@ -23,8 +23,8 @@ class StreakDays extends Streak {
         this.streaks = 0;
     }
     streakDays(date) {
-        let difference = (this.startDate.getTime() - new Date().getTime()) + 1;
-        return this.streaks = Math.ceil(difference / (1000 * 3600 * 24));
+        let difference = this.startDate.getTime() - new Date().getTime() + 1;
+        return (this.streaks = Math.ceil(difference / (1000 * 3600 * 24)));
     }
 }
 class HighestStreaks {
@@ -86,7 +86,7 @@ function showTasks() {
         activities.innerHTML = "";
         const p = document.createElement("p");
         p.textContent = "You Don't have any Activity!!!";
-        p.style.color = 'Black';
+        p.style.color = "Black";
         p.style.fontSize = "32px";
         activities.insertAdjacentElement("afterbegin", p);
     }
@@ -111,12 +111,15 @@ function popTask(id) {
     modal.innerHTML = "";
     const task = Task.filter((a) => a.id === id);
     task.find((a) => {
+        let streak = new StreakDays(new Date(a.Date));
+        let streakdays = streak.streakDays(new Date());
+        console.log(streakdays);
         let html = `
         <div class="modalTask" id="modalTask" style ="display:flex;flex-direction:column;gap:5px; margin-top:10px;" >                      
                 <img src="${a.TaskImage}" style="width:100px;height:100px;margin:5px;">
                 <p>${a.Date}</p>  
                 <p>${a.TaskName}</p>  
-                <p>Streak</p>   
+                <p>${Math.abs(streakdays)} Days</p>   
                 <div class="taskbtn">
                 <button onclick="closeModal()" style="background-color:#ff0000;">Close</button>
                 <button onclick="deleteTask(${a.id})" style="background-color:#6c757d;">Delete</button>
@@ -131,7 +134,7 @@ function closeModal() {
 }
 // delete task
 function deleteTask(id) {
-    const index = Task.findIndex(a => a.id === id);
+    const index = Task.findIndex((a) => a.id === id);
     console.log(index);
     Task.splice(index, 1);
     console.log(index);
@@ -139,3 +142,11 @@ function deleteTask(id) {
     act.style.display = "none";
     showTasks();
 }
+// function showStreaks(id:number){
+//   const task: Tasks[] = Task.filter((a) => a.id === id);
+//   task.find((a) => {
+//   let streak = new StreakDays(new Date(a.Date))
+//   let streakdays = streak.streakDays(new Date())
+//   console.log(streakdays)
+//   })
+// }

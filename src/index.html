@@ -16,15 +16,20 @@
                     <div id="welcome">
                         <h1>Achieving Personal Goals with Streaks
                         </h1>
-                        <h3 style="padding: 5px;">Streaks is the to-do list that helps you form good habits. Every day you complete a task, your streak is extended. Choose or create up to 24 tasks, such as:</h3>
-                        <ul style="margin-left: 80px; font-size: 18px;font-weight: bold;">
-                            <li>walk the dog</li><br>
-                            <li>
-                                floss your teeth</li><br>
-                            <li>eat healthily</li><br>
-                            <li>
-                                practice Spanish</li>
-                        </ul>
+                        <div id="noBest" style="display: block;">
+                            <h3 style="padding: 5px;">Streaks is the to-do list that helps you form good habits. Every day you complete a task, your streak is extended. Choose or create up to 24 tasks, such as:</h3>
+                            <ul style="margin-left: 80px; font-size: 18px;font-weight: bold;">
+                                <li>walk the dog</li><br>
+                                <li>
+                                    floss your teeth</li><br>
+                                <li>eat healthily</li><br>
+                                <li>
+                                    practice Spanish</li>
+                            </ul>
+                        </div>
+                        <div id="best" style="display: none;">
+
+                        </div>
                     </div>
 
                 </div>
@@ -58,12 +63,9 @@
 
                 </div>
 
-                
 
                 <!-- pop up activities goes here -->
-                <div id="modal" style="display: none;">
-
-                </div>
+                <div id="modal" style="display: none;"></div>
 
             </div>
 
@@ -73,17 +75,19 @@
                     <div style="margin-top: 50px;">
                         <h3>You Don't have any Activity!!!</h3>
                     </div>
-    
+
                 </div>
-            </div>       
+            </div>
 
             <div class="footer"><!-- <hr> -->
                 <!-- <p style="text-align: center;color: white;padding: 10px;">Made by Kwamboka</p> -->
             </div>
 
         </div>
-        <script>var exports = {};</script>
-        <script  src="../dist/index.js"></script>
+        <script>
+            var exports = {};
+        </script>
+        <script src="../dist/index.js"></script>
         <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
         <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     </body>
