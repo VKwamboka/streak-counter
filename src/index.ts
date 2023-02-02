@@ -99,15 +99,9 @@ function showTasks(){
       p.style.color='Black'
       p.style.fontSize = "32px"
       activities.insertAdjacentElement("afterbegin",p)
-      // p.id = "error-message"
   }else{
       activities.innerHTML =""
       act.style.display = "block"
-      // const p = document.createElement("p")
-      // p.textContent="Activities"
-      // p.style.color='Black'
-      // p.style.fontSize = "32px"
-      // activities.insertAdjacentElement("afterbegin",p)
       Task.forEach((a) => {
         let html = `
                 <div class="task" style ="display:flex;flex-direction:column;gap:5px; margin-top:10px;" onclick="popTask(${a.id})" >                      
