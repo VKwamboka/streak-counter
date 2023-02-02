@@ -89,11 +89,28 @@ function addTask() {
             Task.push(singleTask);
             showTasks();
             bestStreak = HighestStreaks.highestStreaks();
-            console.log(bestStreak);
+            console.log(bestStreak.Days);
+            function showBest() {
+                best.style.display = "block";
+                best.innerHTML = "";
+                const taskbest = bestStreak;
+                let html = `
+          <div class="task" style ="display:flex;flex-direction:column;gap:5px; margin-top:10px;" onclick="popTask(${taskbest.id})" >                      
+                  <img src="${bestStreak.TaskImage}" style="width:98%;height:100px">
+                  <p>${bestStreak.dates}</p>  
+                  <p>${bestStreak.TaskName}</p>   
+                  <p>${bestStreak.Days}</p>  
+                              
+          </div>`;
+                noBest.style.display = "none";
+                best.innerHTML += html;
+            }
+            showBest();
         }
     });
 }
 addTask();
+// showBest()
 // show tasks
 function showTasks() {
     if (Task.length == 0) {
@@ -156,9 +173,26 @@ function deleteTask(id) {
     console.log(index);
     modal.style.display = "none";
     act.style.display = "none";
+    best.innerHTML = "";
+    noBest.style.display = "block";
     showTasks();
 }
-// display hi
+// display highest Streak
+// function highestStreak(){ 
+//   best.style.display = "block"
+//   best.innerHTML = ""
+//   const taskbest: Tasks = bestStreak
+//   let html = `
+// <div class="task" style ="display:flex;flex-direction:column;gap:5px; margin-top:10px;" onclick="popTask(${taskbest.id})" >                      
+//         <img src="${bestStreak.TaskImage}" style="width:98%;height:100px">
+//         <p>${bestStreak.dates}</p>  
+//         <p>${bestStreak.TaskName}</p>   
+//         <p>${bestStreak.Days}</p>  
+// </div>`;
+// noBest.style.display ="none"
+// best.innerHTML += html;
+// }
+// highestStreak()
 // function highestStreak(){
 //   if(Task.length > 0){
 //     let bestTask:Tasks =Task[0]
