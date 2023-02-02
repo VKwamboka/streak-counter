@@ -13,6 +13,25 @@ let activities = document.getElementById("activities");
 let modal = document.getElementById("modal");
 let act = document.getElementById("act");
 class Streak {
+    constructor(startDate) {
+        this.startDate = startDate;
+    }
+}
+class StreakDays extends Streak {
+    constructor() {
+        super(...arguments);
+        this.streaks = 0;
+    }
+    streakDays(date) {
+        let difference = (this.startDate.getTime() - new Date().getTime()) + 1;
+        return this.streaks = Math.ceil(difference / (1000 * 3600 * 24));
+    }
+}
+class HighestStreaks {
+    static highestStreaks(streakArr) {
+        const maxStreak = Math.max(...streakArr);
+        return maxStreak;
+    }
 }
 // add button
 AddTast.addEventListener("click", () => {
