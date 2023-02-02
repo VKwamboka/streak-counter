@@ -114,10 +114,11 @@ function addTask() {
           </div>`;
           noBest.style.display ="none"
           best.innerHTML += html;
+          
       }
       showBest()
     }
-   
+  
   });
 }
 addTask();
