@@ -127,7 +127,7 @@ function showTasks() {
                         <img src="${a.TaskImage}" style="width:98%;height:100px">
                         <p>${a.dates}</p>  
                         <p>${a.TaskName}</p>   
-                        <p>${a.Days}</p>  
+                        <p>${Math.abs(a.Days)} Streaks</p>  
                                     
                 </div>`;
 
@@ -195,7 +195,8 @@ console.log(bestStreak)
       const taskbest: Tasks = bestStreak
       let html = `
     <div class="task" style ="display:flex;flex-direction:column;gap:5px; margin:auto;" onclick="popTask(${taskbest.id})" >                      
-            <img src="${bestStreak.TaskImage}" style="width:98%;height:100px">
+          <h3>Congratulations bbg!!!</h3>
+    <img src="${bestStreak.TaskImage}" style="width:98%;height:100px">
             <p>${bestStreak.dates}</p>  
             <p>${bestStreak.TaskName}</p>   
             <p>${Math.abs(bestStreak.Days)} Streaks</p>  
