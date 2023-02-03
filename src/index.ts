@@ -22,6 +22,8 @@ class Streak {
   }
 }
 
+
+// class for streak days
 class StreakDays extends Streak {
   private streaks: number = 0;
   streakDays(date: Date) {
@@ -30,6 +32,7 @@ class StreakDays extends Streak {
   }
 }
 
+// class for highest streaks
 class HighestStreaks {
   static highestStreaks() {
     let bestTask: Tasks = Task[0];

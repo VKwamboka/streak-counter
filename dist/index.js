@@ -19,6 +19,7 @@ class Streak {
         this.startDate = startDate;
     }
 }
+// class for streak days
 class StreakDays extends Streak {
     constructor() {
         super(...arguments);
@@ -29,6 +30,7 @@ class StreakDays extends Streak {
         return (this.streaks = Math.ceil(difference / (1000 * 3600 * 24)));
     }
 }
+// class for highest streaks
 class HighestStreaks {
     static highestStreaks() {
         let bestTask = Task[0];
