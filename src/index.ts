@@ -107,7 +107,7 @@ function addTask() {
   });
 }
 addTask();
-// showBest()
+
 
 // show tasks
 function showTasks() {
@@ -194,11 +194,11 @@ console.log(bestStreak)
       best.innerHTML = ""
       const taskbest: Tasks = bestStreak
       let html = `
-    <div class="task" style ="display:flex;flex-direction:column;gap:5px; margin-top:10px;" onclick="popTask(${taskbest.id})" >                      
+    <div class="task" style ="display:flex;flex-direction:column;gap:5px; margin:auto;" onclick="popTask(${taskbest.id})" >                      
             <img src="${bestStreak.TaskImage}" style="width:98%;height:100px">
             <p>${bestStreak.dates}</p>  
             <p>${bestStreak.TaskName}</p>   
-            <p>${bestStreak.Days}</p>  
+            <p>${Math.abs(bestStreak.Days)} Streaks</p>  
                         
     </div>`;
     noBest.style.display ="none"
