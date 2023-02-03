@@ -88,26 +88,6 @@ function addTask() {
             };
             Task.push(singleTask);
             showTasks();
-            // best streaks
-            bestStreak = HighestStreaks.highestStreaks();
-            console.log(bestStreak.Days);
-            function showBest() {
-                if (Task.length > 0) {
-                    best.style.display = "block";
-                    best.innerHTML = "";
-                    const taskbest = bestStreak;
-                    let html = `
-          <div class="task" style ="display:flex;flex-direction:column;gap:5px; margin-top:10px;" onclick="popTask(${taskbest.id})" >                      
-                  <img src="${bestStreak.TaskImage}" style="width:98%;height:100px">
-                  <p>${bestStreak.dates}</p>  
-                  <p>${bestStreak.TaskName}</p>   
-                  <p>${bestStreak.Days}</p>  
-                              
-          </div>`;
-                    noBest.style.display = "none";
-                    best.innerHTML += html;
-                }
-            }
             showBest();
         }
     });
@@ -176,42 +156,33 @@ function deleteTask(id) {
     console.log(index);
     modal.style.display = "none";
     act.style.display = "none";
-    best.innerHTML = "";
-    noBest.style.display = "block";
+    console.log(Task);
+    showBest();
     showTasks();
 }
-// display highest Streak
-// function highestStreak(){ 
-//   best.style.display = "block"
-//   best.innerHTML = ""
-//   const taskbest: Tasks = bestStreak
-//   let html = `
-// <div class="task" style ="display:flex;flex-direction:column;gap:5px; margin-top:10px;" onclick="popTask(${taskbest.id})" >                      
-//         <img src="${bestStreak.TaskImage}" style="width:98%;height:100px">
-//         <p>${bestStreak.dates}</p>  
-//         <p>${bestStreak.TaskName}</p>   
-//         <p>${bestStreak.Days}</p>  
-// </div>`;
-// noBest.style.display ="none"
-// best.innerHTML += html;
-// }
-// highestStreak()
-// function highestStreak(){
-//   if(Task.length > 0){
-//     let bestTask:Tasks =Task[0]
-//     Task.forEach(task=>{
-//       if (task.Days > bestTask.Days){
-//         bestTask = task
-//       }
-//     })
-//     return bestTask
-//   }
-//   return 0
-// }
-// function highestStreak() {
-//   console.log(HighestStreaks.highestStreaks())
-// }
-// highestStreak()
-// submitBtn.addEventListener("click",()=>{
-//   console.log(highestStreak())
-// })
+// best streaks
+function showBest() {
+    showTasks();
+    bestStreak = HighestStreaks.highestStreaks();
+    console.log(bestStreak);
+    if (Task.length > 0) {
+        best.style.display = "block";
+        best.innerHTML = "";
+        const taskbest = bestStreak;
+        let html = `
+    <div class="task" style ="display:flex;flex-direction:column;gap:5px; margin-top:10px;" onclick="popTask(${taskbest.id})" >                      
+            <img src="${bestStreak.TaskImage}" style="width:98%;height:100px">
+            <p>${bestStreak.dates}</p>  
+            <p>${bestStreak.TaskName}</p>   
+            <p>${bestStreak.Days}</p>  
+                        
+    </div>`;
+        noBest.style.display = "none";
+        best.innerHTML += html;
+    }
+    else {
+        noBest.style.display = "block";
+        best.style.display = "none";
+    }
+    //  best.innerHTML = ""
+}
