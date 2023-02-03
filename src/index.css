@@ -135,3 +135,9 @@ form{
     font-size: 28px;
     padding: 10px;
   }
+
+  #best{
+    background-color: white;
+    color: black;
+    width: 50%;
+  }
