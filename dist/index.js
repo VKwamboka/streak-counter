@@ -175,7 +175,7 @@ function showBest() {
         best.innerHTML = "";
         const taskbest = bestStreak;
         let html = `
-    <div class="task" style ="display:flex;flex-direction:column;gap:5px; margin-left:50px;" onclick="popTask(${taskbest.id})" >                      
+    <div class="task" style ="display:flex;flex-direction:column;gap:5px; margin-left:50px;" >                      
           <h3>Congratulations bbg!!! this is your longest streak ever</h3>
     <img src="${bestStreak.TaskImage}" style="width:98%;height:100px">
             <p>${bestStreak.dates}</p>  
