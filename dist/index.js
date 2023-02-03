@@ -88,6 +88,10 @@ function addTask() {
             };
             Task.push(singleTask);
             showTasks();
+            // TaskForm.reset()
+            taskName.value = "";
+            taskImage.value = "";
+            date.value = "";
             showBest();
         }
     });
