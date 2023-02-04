@@ -186,7 +186,7 @@ function deleteTask(id: number) {
   showTasks();
 }
 
-  // best streaks
+// best streaks
 function showBest(){
 showTasks()
 bestStreak = HighestStreaks.highestStreaks();
